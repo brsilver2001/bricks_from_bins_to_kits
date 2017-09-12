@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageOps
 import numpy as np
 import cv2
 import os.path
@@ -115,6 +115,18 @@ def shoot_pic(camera,npics=20):
     for i in range(npics):
         capture = shoot_1_pic(camera)
     return capture
+
+def shoot_crop_and_scale(camera,use_gray=True,image_dims=299,border_fraction=0.3):
+    # Shoot picture, crop and scale
+    pic = shoot_pic(camera)
+
+    if use_gray:
+        pic = convert_to_gray(pic)
+    im = Image.fromarray(pic)
+    newpic = ImageOps.fit(im, (image_dims,image_dims), Image.ANTIALIAS,
+                          border_fraction, (.5,.5))
+    return np.array(newpic)
+
 
 def save_pic(filename,capture):
     '''Save previously captured image to file
