@@ -1,2 +1,4 @@
 *.pyc
 *.png
+*.h5
+brick_pic_temp_files/
