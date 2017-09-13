@@ -6,7 +6,7 @@ import numpy as np
 
 #import os
 import cPickle as pickle
-from src import picture_stuff as pix
+import picture_stuff as pix
 
 from keras.models import load_model
 
@@ -47,9 +47,9 @@ def load_keras_model(filepath, use_gray=True):
     if use_gray:
         #fname = filepath + 'keras_inception_all_partially_trained_gray.h5'
         #fname = filepath + 'keras_inception_all_trained_gray.h5'
-        fname = filepath + 'keras_example_inception_trained-gray.h5'
+        fname = filepath + 'keras_inception_all_re-trained-grey.h5'
     else:
-        fname = filepath + 'keras_example_inception_trained-copy2.h5'
+        fname = filepath + 'keras_inception_all_re-trained.h5'
 
     model = load_model(fname)
     return model
@@ -62,17 +62,77 @@ def load_label_dictionary(filepath, use_gray=True):
        OUTPUTS: label_dic: dictionary of label data
     '''
     if use_gray:
-        fname = filepath + "label_dic-gray.pkl"
+        fname = filepath + "label_dic_all-gray.pkl"
     else:
-        fname = filepath + "label_dic.pkl"
+        fname = filepath + "label_dic_all.pkl"
     with open(fname) as f_un:
         label_dic = pickle.load(f_un)
     return label_dic
 
+def plot_top_8(one_pic_X,pic_label,X,idx_preds,preds,weights):
+    '''Just a plot routine to show the predicted results
+       Currently hard-coded to display 2 rows, top 8 results
+       but could be made more flexible later
+       INPUTS: one_pic_X, numpy array of test picture
+               pic_label, label for picture
+               X, numpy arrary of all example pictures
+               idx_preds, list of indices for predicted pictures in X
+               preds, list of predicted labels
+               weights, list of prediction weights
+        OUTPUTS: fig, ax, matplotlib figure and axis objects
+    '''
+    fig, ax = plt.subplots(2,6,figsize=(14,5))
+
+    ax1 = plt.subplot2grid((2, 6), (0, 0), colspan=2,rowspan=2)
+    ax1.imshow(Image.fromarray(one_pic_X[:,:,::-1]))
+
+    ax1.set_title("new brick pic: " + str(pic_label))
+    ax1.grid(False)
+    ax1.axis('off')
+
+    for idx1 in range(2):
+        for idx2 in range(4):
+            ax2 = plt.subplot2grid((2, 6), (idx1,idx2+2))
+            ax2.imshow(Image.fromarray(X[idx_preds[idx1*4+idx2]]))
+            ax2.set_title("{} @ {:.1f}%".format(
+                preds[idx1*4+idx2],100*weights[idx1*4+idx2]))
+            ax2.grid(False)
+            ax2.axis('off')
+    plt.show();
+
+    # If you like the figure, save it!
+    picfilename = ("../saved_brick_predictions/" + str(pic_label) + "_temp.png")
+    with open(picfilename, 'wb') as whatever:
+        fig.savefig(whatever)
+
+    return fig, ax
 
 if __name__ == '__main__':
     use_gray = True
-    X,y_list = load_examples("data/",use_gray)
+    X,y_list = load_examples("../data/",use_gray)
     filepath = '../saved_models/'
     model = load_keras_model(filepath, use_gray)
     label_dic = load_label_dictionary(filepath, use_gray)
+
+    image_dims = 299
+    border_fraction = .3
+    picture_index_lookup = pix.picture_index_function(y_list)
+
+    camera = pix.initialize_camera()
+
+    # Input a file name = brick shape: e.g. 3021
+    pic_label = raw_input('Type label (integer as file name):')
+
+    extension, filename = pix.increment_filename(pic_label,extension=1)
+
+    one_pic_X = pix.keep_shooting_until_acceptable(camera,filename)
+    del(camera)
+
+    predict_gen = model.predict_on_batch(np.expand_dims(one_pic_X,axis=0))
+
+    preds, weights = pix.make_one_prediction_list(
+        predict_gen,label_dic,n_match=10)
+
+    idx_preds = [picture_index_lookup[pred] for pred in preds]
+
+    plot_top_8(one_pic_X,pic_label,X,idx_preds,preds,weights);

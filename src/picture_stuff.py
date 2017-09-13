@@ -1,5 +1,6 @@
 from PIL import Image, ImageOps
 import numpy as np
+import matplotlib.pyplot as plt
 import cv2
 import os.path
 
@@ -67,7 +68,7 @@ def initialize_camera():
     return cv2.VideoCapture(0)
     pass
 
-def increment_filename(pic_label,extension):
+def increment_filename(pic_label,extension=1):
     '''Creates a filename to store picture in, based on brick label
        and increments through allowable file name-number combinations
        until it reaches one that doesn't already exist
@@ -93,7 +94,7 @@ def _add_tail(pic_label,extension):
        OUTPUT: string file name
     '''
     tail = '-{0:03d}.jpeg'.format(extension)
-    filename = 'brick_pic_temp_files/' + pic_label + tail
+    filename = '../brick_pic_temp_files/' + pic_label + tail
     return filename
 
 
@@ -127,11 +128,57 @@ def shoot_crop_and_scale(camera,use_gray=True,image_dims=299,border_fraction=0.3
                           border_fraction, (.5,.5))
     return np.array(newpic)
 
+def picture_index_function(y_list):
+    ''' Given the set of example pictures associated with y_list labels,
+        make a dictionary that lets you pick the right photo from a label
+        This will NOT be the same dictionary as on the training set.
+
+        X[[picture_index_lookup[label]] is the picture for the label
+
+        INPUT:  y_list, list of labels for picture classes
+        OUTPUT: picture_index_lookup, dictionary keys are indices
+                                      dixtionary valuess are labels
+    '''
+
+    picture_index_lookup = {}
+    for idx,label in enumerate(y_list):
+        picture_index_lookup[label]=idx
+    return picture_index_lookup
+
 
 def save_pic(filename,capture):
     '''Save previously captured image to file
     '''
     cv2.imwrite(filename, capture)
+
+
+def keep_shooting_until_acceptable(camera,filename):
+    '''Takes a webcam photo and loops until user finds it acceptable.
+       User can enter 0 to reshoot, or anything else in order to save
+       the file and use it for image classification.
+       INPUTS: camera: OpenCV2 video capture object
+               filename: path and name to save picture
+       OUTPUT: one_pic_X: numpy array of new photo
+    '''
+    keep_shooting = True
+    while keep_shooting:
+        one_pic_X = shoot_crop_and_scale(camera,use_gray=True)
+
+        fig, ax = plt.subplots(1,figsize=(6,6))
+        # NOTE: one_pic_X[:,:,::-1] is presented this way because of OpenCV's
+        # preference to treat RGB files as BGR, so they need to be reversed.
+        # This isn't needed if we stick to grayscale.
+        ax.imshow(one_pic_X[:,:,::-1], cmap=plt.cm.gray_r, interpolation="nearest")
+        ax.grid(False)
+        plt.show();
+
+        next_action = raw_input('Enter 0:reshoot, any other:save')
+
+        if next_action != '0':
+            save_pic(filename,one_pic_X)
+            keep_shooting = False
+
+    return one_pic_X
 
 
 def y_to_hot(y_list):
@@ -172,6 +219,28 @@ def make_full_prediction_list(predict_gen,label_dic,n_match=5):
         preds = [label_dic[temp0[idx,idx2]] for idx2 in range(n_match)]
         out_list.append(preds)
     return out_list,out_weights
+
+def make_one_prediction_list(predict_gen,label_dic,n_match=5):
+    '''Takes a list of item labels and predicted values and returns a
+       list of prediction labels for the first n_match predictions
+       NOTE: because predict_gen uses model.predict_on_batch, which is
+             designed to return predictions for a list of inputs, this
+             function has to return out_list[0],out_weights[0] as the
+             predictions associated with the first and only input.
+       INPUTS: y_list,
+               predict_gen,
+               n_match=5
+       OUTPUTS:out_list = list of list of predictions
+               out_weights = numpy array of top n_match predicted weights
+    '''
+    temp0 = np.flip(np.argsort(predict_gen, axis=1),axis=1)
+    out_weights = np.flip(np.sort(predict_gen,axis = 1),axis=1)[:,:n_match]
+
+    out_list=[]
+    for idx in range(len(predict_gen)):
+        preds = [label_dic[temp0[idx,idx2]] for idx2 in range(n_match)]
+        out_list.append(preds)
+    return out_list[0],out_weights[0]
 
 
 def make_wrong_list(y_hot,full_prediction_list,label_dic):
