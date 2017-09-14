@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+    <div>
+        <button type="button" onclick="window.location.href='{{ url_for( 'index' ) }}';" id="welcome">Main menu</button>
+        <button type="button" onclick="window.location.href='{{ url_for( 'login' ) }}';" id="login">Log in</button>
+        <button type="button" onclick="window.location.href='{{ url_for( 'new_user' ) }}';" id="new_login">New account</button>
+    </div>
+
+    <h2>Take Pictures</h2>
+    <p></p>
+
+    <p>To make your own custom list of bricks:</p>
+    <li>Place one brick in front of the camera.  For best results, put the brick
+        with the longest, most comples side facing the camers.</li>
+    <li>Press the SHOOT button </li>
+    <li>Confirm that our interpretation of your picture is right, or reshoot. </li>
+    <p></p>
+    <p>Choose an option below!</p>
+
+    <div>
+        <button type="button" id="shoot">SHOOT</button>
+
+    </div>
+
+    <p>
+        <img src="/static/images/lego digital designer screenshot.png" alt="This is a brick">
+    </p>
+
+
+    <div>
+        <!-- These have id's so that later we can pull out data using js. -->
+        <span>Enter here:</span> <input id="testing"></input>
+    </div>
+
+    <div>
+        <!-- The span has an id so that later we can fill in the solution
+             using js. -->
+        <p> The prediction is: <span id="solution"></span> </p>
+
+{% endblock %}

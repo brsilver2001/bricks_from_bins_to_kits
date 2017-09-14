@@ -1,0 +1,30 @@
+<html>
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Ben's Bricks</title>
+  <meta name="description" content="Brick bins to kits App">
+  <meta name="author" content="Brian Silverstein">
+
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery.js') }}">
+  </script>
+  <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}">
+  </script>
+  <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static', filename='css/bricks.css') }}">
+
+
+
+</head>
+<body>
+    <h1>Welcome to the Ben's Bricks BINS TO BRICKS App</h1>
+    <h2>OTHER HEADER STUFF</h2>
+    <p>
+        <img src="/static/images/mixed_set_recognized.png" alt="This is the banner">
+    </p>
+
+ {% block body %}{% endblock %}
+
+</body>
+</html>
