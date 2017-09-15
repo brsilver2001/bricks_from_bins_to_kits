@@ -1,11 +1,11 @@
-let get_input_coefficients = function() {
-    let JSON_input_vals = $("input#testing").val()
-    return {'JSON_INPUT_KEY': parseInt(JSON_input_vals)}
+let get_input_label = function() {
+    let JSON_input_vals = $("input#label").val()
+    return {'JSON_input_label': parseInt(JSON_input_vals)}
 };
 
 let send_coefficient_json = function(coefficients) {
     $.ajax({
-        url: '/solve',
+        url: '/shoot',
         contentType: "application/json; charset=utf-8",
         type: 'POST',
         success: function (data) {
@@ -16,14 +16,14 @@ let send_coefficient_json = function(coefficients) {
 };
 
 let display_solutions = function(solutions) {
-    $("span#solution").html(solutions.root_1)
+    $("span#solution1").html(solutions.root_1)
 };
 
 
 $(document).ready(function() {
 
-    $("button#solve").click(function() {
-        let coefficients = get_input_coefficients();
+    $("button#shoot").click(function() {
+        let coefficients = get_input_label();
         send_coefficient_json(coefficients);
     })
 

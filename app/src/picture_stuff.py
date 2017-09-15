@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 import os.path
+import sys
 
 '''
 Capstone project for Galvanize Data Science Immersion course, Seattle
@@ -65,8 +66,13 @@ def initialize_camera():
         INPUTS: None
         OUTPUT: cv2 camera object
     '''
+    print "checkpoint - initialize camera now"
+    sys.stdout.flush()
     return cv2.VideoCapture(0)
-    pass
+
+
+def just_dummy(x):
+    return x
 
 def increment_filename(pic_label,extension=1):
     '''Creates a filename to store picture in, based on brick label
