@@ -54,9 +54,9 @@ def cam1():
 
 
 
-@app.route('/shoot', methods=['POST'])
-def shoot():
-    print "executing template: shoot"
+@app.route('/classify', methods=['POST'])
+def classify():
+    print "executing template: classify"
     user_data = request.json
     JSON_input_values = user_data['JSON_input_label']
     print "checkpoint: user data input = ",JSON_input_values
@@ -64,16 +64,12 @@ def shoot():
     print "checkpoint: ready to initialize camera"
     print pix.just_dummy("foo")
     '''
-    camera = cv2.VideoCapture(0)
-    #camera = pix.initialize_camera()
-    print "checkpoint: camera ready"
-    # Input a file name = brick shape: e.g. 3021
+
     pic_label = JSON_input_values
     extension, filename = pix.increment_filename(pic_label,extension=1)
 
     print "checkpoint: ready to shoot photo"
-    #one_pic_X = pix.keep_shooting_until_acceptable(camera,filename)
-    #del(camera)
+    #one_pic_X =
     '''
 
     model_output = _dummy_function(JSON_input_values)

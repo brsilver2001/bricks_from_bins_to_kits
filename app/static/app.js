@@ -5,7 +5,7 @@ let get_input_label = function() {
 
 let send_coefficient_json = function(coefficients) {
     $.ajax({
-        url: '/shoot',
+        url: '/classify',
         contentType: "application/json; charset=utf-8",
         type: 'POST',
         success: function (data) {

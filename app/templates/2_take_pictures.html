@@ -18,6 +18,10 @@
     <li>Confirm that our interpretation of your picture is right, or reshoot. </li>
     <p></p>
 
+
+    <p>
+        <img src="/static/images/lego digital designer screenshot.png" alt="This is a brick">
+    </p>
     <div>
         <span>Please enter the a label to save your picture under:</span>
         <input id="label"></input>
@@ -27,40 +31,30 @@
 
     <!-- This div is pasted from https://github.com/mdn/samples-server/tree/master/s/webrtc-capturestill -->
     <div class="contentarea">
-    	<p> Photo preview and photo shown here
-    	</p>
+      <p> Photo preview and photo shown here</p>
       <div class="camera">
-        <video id="video">Video stream not available.</video>
-        <button id="startbutton">Take photo</button>
+          <video id="video">Video stream not available.</video>
       </div>
-      <canvas id="canvas">
-      </canvas>
+      <canvas id="canvas"> </canvas>
       <div class="output">
-        <img id="photo" alt="The screen capture will appear in this box.">
+          <img id="photo" alt="The screen capture will appear in this box.">
       </div>
     </div>
 
-
-
-
-
     <div>
-        <button type="button" id="shoot">SHOOT</button>
-    </div>
-    <p>
-        <img src="/static/images/lego digital designer screenshot.png" alt="This is a brick">
-    </p>
-
-    <div>
-        <button type="button" id="classify">CLASSIFY</button>
-        OR
-        <button type="button" id="reshoot">RE-SHOOT</button>
-
+        <button id="startbutton">Take or retake photo</button>
+        then
+        <button type="button" id="classify">Classify this picture</button>
     </div>
 
+
     <div>
-        <!-- The span has an id so that later we can fill in the solution
-             using js. -->
-        <p> The prediction is: <span id="solution1"></span> </p>
+    <!-- The span has an id so that later we can fill in the solution
+         using js. -->
+    <p> The prediction is: <span id="solution1"></span> </p>
+
+    <div class="output2">
+        <img id="photo2" alt="Classification results will appear in this box.">
+    </div>
 
 {% endblock %}
