@@ -60,17 +60,15 @@ def classify():
     user_data = request.json
     JSON_input_values = user_data['JSON_input_label']
     print "checkpoint: user data input = ",JSON_input_values
-    # THE FOLLOWING 5 LINES OF CODE ARE UNCHANGED FROM load_model_and_go.py
-    print "checkpoint: ready to initialize camera"
-    print pix.just_dummy("foo")
-    '''
 
     pic_label = JSON_input_values
     extension, filename = pix.increment_filename(pic_label,extension=1)
 
-    print "checkpoint: ready to shoot photo"
-    #one_pic_X =
-    '''
+    print "checkpoint: file name is ",filename
+    #one_pic_X = picture from <img id="photo">
+
+
+    print pix.just_dummy("foo")
 
     model_output = _dummy_function(JSON_input_values)
 

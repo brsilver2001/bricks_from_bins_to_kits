@@ -78,15 +78,21 @@ span.psw {
 #video {
   border: 1px solid black;
   box-shadow: 2px 2px 3px black;
-  width:320px;
-  height:240px;
+  width:299px;   /* WAS 320 */
+  height:299px;  /* WAS 240 */
+}
+
+#banner {
+	border: 3px solid black;
+    width:500px;
+    height:200px;
 }
 
 #photo {
   border: 1px solid black;
   box-shadow: 2px 2px 3px black;
-  width:320px;
-  height:240px;
+  width:299px;   /* WAS 320 */
+  height:299px;  /* WAS 240 */
 }
 
 #canvas {
@@ -94,12 +100,12 @@ span.psw {
 }
 
 .camera {
-  width: 340px;
+  width:299px;   /* WAS 340 */
   display:inline-block;
 }
 
 .output {
-  width: 340px;
+  width:299px;   /* WAS 340 */
   display:inline-block;
 }
 

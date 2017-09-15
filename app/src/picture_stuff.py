@@ -100,7 +100,7 @@ def _add_tail(pic_label,extension):
        OUTPUT: string file name
     '''
     tail = '-{0:03d}.jpeg'.format(extension)
-    filename = '../brick_pic_temp_files/' + pic_label + tail
+    filename = '../brick_pic_temp_files/' + str(pic_label) + tail
     return filename
 
 
