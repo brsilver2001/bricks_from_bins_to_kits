@@ -22,7 +22,7 @@ let display_solutions = function(solutions) {
 
 $(document).ready(function() {
 
-    $("button#shoot").click(function() {
+    $("button#classify").click(function() {
         let coefficients = get_input_label();
         send_coefficient_json(coefficients);
     })
