@@ -97,8 +97,8 @@ span.psw {
 #photo2 {
   border: 5px solid black;
   /*box-shadow: 2px 2px 3px black; */
-  width:800px;   /* WAS 320 */
-  height:400px;  /* WAS 240 */
+  width:840px;   /* WAS 320 */
+  height:300px;  /* WAS 240 */
 }
 
 #canvas {

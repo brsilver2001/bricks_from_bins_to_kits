@@ -14,8 +14,8 @@
     <p>To make your own custom list of bricks:</p>
     <li>Place one brick in front of the camera.  For best results, put the brick
         with the longest, most comples side facing the camers.</li>
-    <li>Press the SHOOT button </li>
-    <li>Confirm that our interpretation of your picture is right, or reshoot. </li>
+    <li>Press the "Take or retake photo" button </li>
+    <li>Press the "Classify this picture" button to get the id number of this brick, or reshoot. </li>
     <p></p>
 
 
@@ -52,18 +52,15 @@
     <!-- The span has an id so that later we can fill in the solution
          using js. -->
     <p> The prediction is: <span id="solution1"></span> </p>
+    <p>The latest classification picture is: <span id="solution2"></span></p>
 
     <h3>This is the most recent classification picture</h3>
-    <!--
+
     <img id="photo2" src="/static/images/latest_prediction.png" alt="This is a brick">
+
+    <!--
+    <img id="photo2" src="" alt="Classification results will appear in this box.">
     -->
 
-
-    <div class="final_result">
-        <img id="photo2"
-             src="/static/images/latest_prediction.png"
-             alt="Classification results will appear in this box.">
-    </div>
-    
 
 {% endblock %}

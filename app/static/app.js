@@ -21,6 +21,9 @@ let send_coefficient_json = function(coefficients) {
 
 let display_solutions = function(solutions) {
     $("span#solution1").html(solutions.root_1)
+    //$("span#solution1").html(solutions.root_1 + " and " + solutions.pic_x)
+    $("span#solution2").html(solutions.pic_x)
+    //$("img#photo2").html(solutions.pic_x)
 };
 
 

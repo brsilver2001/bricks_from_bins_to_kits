@@ -81,7 +81,6 @@ def plot_top_8(one_pic_X,pic_label,X,idx_preds,preds,weights):
                weights, list of prediction weights
         OUTPUTS: fig, ax, matplotlib figure and axis objects
     '''
-    print "checkpoint 0 in plot_top_8"
     fig, ax = plt.subplots(2,6,figsize=(14,5))
 
     ax1 = plt.subplot2grid((2, 6), (0, 0), colspan=2,rowspan=2)
@@ -102,7 +101,7 @@ def plot_top_8(one_pic_X,pic_label,X,idx_preds,preds,weights):
             ax2.axis('off')
     #plt.show();
 
-    print "checkpoint2 in plot_top_8"
+    print "checkpoint 2 in plot_top_8"
 
     # If you like the figure, save it!
     picfilename = ("../saved_brick_predictions/" + str(pic_label) + "_temp.png")
@@ -111,6 +110,8 @@ def plot_top_8(one_pic_X,pic_label,X,idx_preds,preds,weights):
 
     with open("static/images/latest_prediction.png", 'wb') as whatever:
         fig.savefig(whatever)
+
+    print "checkpoint 3 in plot_top_8"
 
     return fig, ax
 
