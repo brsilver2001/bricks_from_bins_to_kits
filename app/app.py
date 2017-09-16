@@ -100,19 +100,7 @@ def classify():
     print "np type ", type(one_pic_X)
     print "np leng ", len(one_pic_X)
     print "np shape", one_pic_X.shape
-    print "np first 10: ", one_pic_X[:10]
 
-    '''
-    X_temp = np.frombuffer(base64_X, dtype=np.float64)
-    print "np type ???", type(X_temp)
-    print "np leng ???", len(X_temp)
-    print "np first 100: ", X_temp[:100]
-
-    one_pic_X = np.array(base64_X)
-    print "np type ???", type(one_pic_X)
-    print "np leng ???", len(one_pic_X)
-    print "np first 100: ", one_pic_X[:100]
-    '''
     print "checkpoint: one_pic_X shape:",one_pic_X.shape
     one_pic_X = pix.crop_and_scale(one_pic_X,use_gray=True,
                                image_dims=299,border_fraction=0.0)
@@ -126,41 +114,27 @@ def classify():
     extension, filename = pix.increment_filename(pic_label,extension=1)
     print "checkpoint: file name is ",filename
 
-    '''
-    #  Crashing here on model:  try something different --
-    #  Loading other file to put into model
-    one_pic_X = X[0]
-    print
-    print "NEW INPUT DATA FROM OLD X"
-    print "np type ", type(one_pic_X)
-    print "np leng ", len(one_pic_X)
-    print "one_pic_X size",one_pic_X.shape, "data type", one_pic_X.dtype
-    '''
-
     this_model_input = np.expand_dims(one_pic_X,axis=0)
-    print "this_model_input size",this_model_input.shape, "data type", this_model_input.dtype
+    #print "this_model_input size",this_model_input.shape, "data type", this_model_input.dtype
 
     predict_gen = model.predict_on_batch(this_model_input)
-    print predict_gen
 
     preds, weights = pix.make_one_prediction_list(
         predict_gen,label_dic,n_match=10)
 
     idx_preds = [picture_index_lookup[pred] for pred in preds]
 
-    '''
+    print "ok to here too"
     ld.plot_top_8(one_pic_X,pic_label,X,idx_preds,preds,weights);
-    '''
 
-    model_output = str(str(_dummy_function(pic_label)) +
+    picfilename = ("../saved_brick_predictions/" + str(pic_label) + "_temp.png")
+
+
+    model_output = str(str(pic_label) +
                        " " + str(preds[0]) +
                        " " + str(weights[0]) )
     return jsonify({'root_1': model_output})
 
-
-def _dummy_function(model_input):
-    model_output = model_input
-    return model_output
 
 
 if __name__ == '__main__':
@@ -182,16 +156,10 @@ if __name__ == '__main__':
 
 
     one_pic_X = X[0]
-    print
     print "Model test during setup"
-    print "np type ", type(one_pic_X)
-    print "np leng ", len(one_pic_X)
-    print "one_pic_X size",one_pic_X.shape, "data type", one_pic_X.dtype
     this_model_input = np.expand_dims(one_pic_X,axis=0)
-    print "this_model_input size",this_model_input.shape, "data type", this_model_input.dtype
+    print "Test OK: this_model_input size",this_model_input.shape, "data type", this_model_input.dtype
     predict_gen = model.predict_on_batch(this_model_input)
-    #print predict_gen
-
 
 
     app.run(host='0.0.0.0', threaded=True)

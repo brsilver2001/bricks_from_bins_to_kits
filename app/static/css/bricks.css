@@ -94,6 +94,13 @@ span.psw {
   height:299px;  /* WAS 240 */
 }
 
+#photo2 {
+  border: 5px solid black;
+  /*box-shadow: 2px 2px 3px black; */
+  width:800px;   /* WAS 320 */
+  height:400px;  /* WAS 240 */
+}
+
 #canvas {
   display:none;
 }
