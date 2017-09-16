@@ -19,7 +19,7 @@ span {
 img {
 	width:200px;
 	height:120px;
-	border-radius: 10px;
+	/* border-radius: 10px; */
 	border: 5px solid #6495ED;
 	margin: 0px 15px
 }
@@ -69,7 +69,11 @@ span.psw {
     padding-top: 16px;
 }
 
-
+#banner {
+	border: 3px solid black;
+    width:500px;
+    height:200px;
+}
 
 /* All below is for attempt at webcam capture */
 /* from https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos */
@@ -77,20 +81,15 @@ span.psw {
 
 #video {
   border: 1px solid black;
-  box-shadow: 2px 2px 3px black;
-  width:299px;   /* WAS 320 */
+  /*box-shadow: 2px 2px 3px black; */
+  width:399px;   /* WAS 320 */
   height:299px;  /* WAS 240 */
 }
 
-#banner {
-	border: 3px solid black;
-    width:500px;
-    height:200px;
-}
 
 #photo {
   border: 1px solid black;
-  box-shadow: 2px 2px 3px black;
+  /*box-shadow: 2px 2px 3px black; */
   width:299px;   /* WAS 320 */
   height:299px;  /* WAS 240 */
 }
@@ -100,7 +99,7 @@ span.psw {
 }
 
 .camera {
-  width:299px;   /* WAS 340 */
+  width:400px;   /* WAS 340 */
   display:inline-block;
 }
 
@@ -128,5 +127,5 @@ span.psw {
 .contentarea {
   font-size: 16px;
   font-family: "Lucida Grande", "Arial", sans-serif;
-  width: 760px;
+  width: 800px;  /* was width: 760px; */
 }

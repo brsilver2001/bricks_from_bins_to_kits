@@ -71,8 +71,6 @@ def initialize_camera():
     return cv2.VideoCapture(0)
 
 
-def just_dummy(x):
-    return x
 
 def increment_filename(pic_label,extension=1):
     '''Creates a filename to store picture in, based on brick label
@@ -126,7 +124,9 @@ def shoot_pic(camera,npics=20):
 def shoot_crop_and_scale(camera,use_gray=True,image_dims=299,border_fraction=0.3):
     # Shoot picture, crop and scale
     pic = shoot_pic(camera)
+    return crop_and_scale(pic,use_gray,image_dims,border_fraction)
 
+def crop_and_scale(pic,use_gray=True,image_dims=299,border_fraction=0.3):
     if use_gray:
         pic = convert_to_gray(pic)
     im = Image.fromarray(pic)

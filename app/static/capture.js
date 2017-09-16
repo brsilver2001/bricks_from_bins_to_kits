@@ -4,7 +4,7 @@
   // calculated based on the aspect ratio of the input stream.
 
   var width = 299;    // We will scale the photo width to this (WAS 320 IN ORIGINAL)
-//  var height = 0;     // This will be computed based on the input stream
+  //var height = 0;     // This will be computed based on the input stream
   var height = 299;
 
   // |streaming| indicates whether or not we're currently streaming
@@ -54,13 +54,12 @@
       if (!streaming) {
         widthscale = video.videoWidth / width;
         height = video.videoHeight / widthscale;
-        heightscale = video.videoHeight / height;
 
         // Firefox currently has a bug where the height can't be read from
         // the video, so we will make assumptions if this happens.
 
         if (isNaN(height)) {
-          height = width;  /* was  height = width / (4/3); */
+          height = width ;  /* was  height = width / (4/3); */
         }
 
         video.setAttribute('width', width);
@@ -102,12 +101,14 @@
     if (width && height) {
       canvas.width = width;
       canvas.height = height;
-      crop = 0.1;
+      crop = 0.15;
       dy = video.videoHeight * crop;
       dHeight = video.videoHeight * (1.0 - crop * 2);
       dx = 0.5 * (video.videoWidth - dHeight);
       dWidth = dHeight;
       context.drawImage(video, dx, dy, dWidth, dHeight, 0, 0, width, height);
+      //context.drawImage(video, 0, 0, width, height, 0, 0, width, height);
+
 
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);

@@ -132,6 +132,7 @@ if __name__ == '__main__':
     one_pic_X = pix.keep_shooting_until_acceptable(camera,filename)
     del(camera)
 
+    print "checkpoint: one_pic_X size",one_pic_X.shape, "data type", one_pic_X.dtype
     predict_gen = model.predict_on_batch(np.expand_dims(one_pic_X,axis=0))
 
     preds, weights = pix.make_one_prediction_list(
