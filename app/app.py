@@ -141,12 +141,12 @@ if __name__ == '__main__':
     print "models loaded, ready to take pictures"
 
 
-    '''
+    
     one_pic_X = X[0]
     print "Model test during setup"
     this_model_input = np.expand_dims(one_pic_X,axis=0)
     print "Test OK: this_model_input size",this_model_input.shape, "data type", this_model_input.dtype
     predict_gen = model.predict_on_batch(this_model_input)
-    '''
+
 
     app.run(host='0.0.0.0', threaded=True)

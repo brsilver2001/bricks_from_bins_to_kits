@@ -10,24 +10,30 @@
 <h2>Main Menu</h2>
 <p></p>
 
-    <p>This app allows you to</p>
-    <li>Identify what kits you can make from a list of bricks </li>
-    <li>Identify what bricks you are missing from a kit </li>
-    <li>Turn photographs of your bricks into a list of brick IDs </li>
-    <li>Upload and save your inventories of bricks and kits </li>
-    <li>Order missing bricks </li>
-    <li>Print missing instructions </li>
-    <p></p>
-    <p>Choose an option below!</p>
+<p>This app allows you to</p>
+<li>Identify what kits you can make from a list of bricks </li>
+<li>Identify what bricks you are missing from a kit </li>
+<li>Turn photographs of your bricks into a list of brick IDs </li>
+<li>Upload and save your inventories of bricks and kits </li>
+<li>Order missing bricks </li>
+<li>Print missing instructions </li>
+<p></p>
+<button type="button" onclick="window.location.href='{{ url_for( 'take_pictures' ) }}';"
+        id="big_button">Almost everything but this button is a placeholder:
+        Please click here for stuff that works</button>
 
-    <div>
-        <button type="button" onclick="window.location.href='{{ url_for( 'take_pictures' ) }}';" id="find_kit">Find kits</button>
-        <button type="button" onclick="window.location.href='{{ url_for( 'take_pictures' ) }}';" id="shoot_pics">Identify by photo</button>
-        <button type="button" onclick="window.location.href='{{ url_for( 'make_brick_list' ) }}';" id="make_list">Upload brick lists</button>
-        <button type="button" onclick="window.location.href='{{ url_for( 'cam1' ) }}';" id="none">none</button>
-    </div>
-    <p></p>
-    <div>
+<p></p>
+
+<p>Choose an option below!</p>
+
+<div>
+    <button type="button" onclick="window.location.href='{{ url_for( 'take_pictures' ) }}';" id="find_kit">Find kits</button>
+    <button type="button" onclick="window.location.href='{{ url_for( 'take_pictures' ) }}';" id="shoot_pics">Identify by photo</button>
+    <button type="button" onclick="window.location.href='{{ url_for( 'make_brick_list' ) }}';" id="make_list">Upload brick lists</button>
+    <button type="button" onclick="window.location.href='{{ url_for( 'cam1' ) }}';" id="none">none</button>
+</div>
+<p></p>
+<div>
 
 
 

@@ -130,6 +130,13 @@ span.psw {
   color: rgba(255, 255, 255, 1.0);
 }
 */
+#big_button {
+	border: 5px solid black;
+	border-radius: 15px;
+	font-size: 24px;
+	width: 500;
+	height: 150;
+}
 
 .contentarea {
   font-size: 16px;
