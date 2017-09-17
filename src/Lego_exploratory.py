@@ -116,6 +116,12 @@ def brick_dictionary_from_csv(info_dir,name_list,reverse=False):
     return bric_dict
 
 def category_from_name(part_num,parts):
+    '''This function just does a dictionary check for lookup of
+       part data. Used only in Lego_Exploratory_Data_Analysis.ipynb
+       INPUTS: part_num: dictionary of ID numbers
+               parts: pandas df from rebrickable.com data
+       OUTPUTS:part ID from dictionary
+    '''
     temp=parts[parts['part_num']==part_num]
     if temp.shape[0]> 0:
         return max(temp['part_cat_id'])
@@ -123,6 +129,11 @@ def category_from_name(part_num,parts):
         return -1
 
 def make_y_categories(info_dir,name_list,passed_list):
+    '''Takes info from rebrickable.com data and makes a list
+       which I was considering using as category labels before
+       deciding to go with individual lego shape ID numbers.
+       Used only in Lego_Exploratory_Data_Analysis.ipynb
+    '''
     all_y_stuff = pd.DataFrame(columns=['Brick','Name','Part',
                                         'csv_file_name','csv_file_num',
                                         'part_cat_id'])
@@ -141,6 +152,10 @@ def make_y_categories(info_dir,name_list,passed_list):
 
 
 def count_most_popular_kits(inventory_parts,bric_dict,n=5):
+    '''Takes info from rebrickable.com data and makes a list
+       of lego part IDs which occur in the most kits
+       Used only in Lego_Exploratory_Data_Analysis.ipynb
+    '''
     part_kit_count = {}
     for key in inventory_parts['part_num']:
         part_kit_count[key] = part_kit_count.get(key,0)+1
@@ -157,6 +172,12 @@ def count_most_popular_kits(inventory_parts,bric_dict,n=5):
 
 
 def count_most_popular_count(inventory_parts,bric_dict,n=5):
+    '''Takes info from rebrickable.com data and makes a list
+       of lego part IDs which occur MOST in a set of all kits.
+       Different from "count_most_popular_kits" in that a brick
+       used 100x in a kit gets a boost here, but is counted 1x there.
+       Used only in Lego_Exploratory_Data_Analysis.ipynb
+    '''
     part_pop_count ={}
     for key,num in zip(inventory_parts['part_num'],inventory_parts['quantity']):
         part_pop_count[key] = part_pop_count.get(key,0)+num
@@ -172,9 +193,9 @@ def count_most_popular_count(inventory_parts,bric_dict,n=5):
 
 
 def cos_similarity(a,b):
-    '''
-    INPUTS: two vectors
-    OUTPUT: cosine similarity scaled so parallel=1,anti-parallel=0,perpendicular=.5
+    '''Not currently used, but will be when comparing lists to kit lists.
+       INPUTS: two vectors
+       OUTPUT: cosine similarity scaled so parallel=1,anti-parallel=0,perpendicular=.5
     '''
     return 0.5 + 0.5*np.dot(a,b)/np.linalg.norm(a)/np.linalg.norm(b)
 
