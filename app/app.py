@@ -15,6 +15,8 @@ import StringIO
 import cPickle as pickle
 import src.picture_stuff as pix
 import src.load_model_and_go as ld
+import uuid
+
 
 from keras.models import load_model
 
@@ -76,7 +78,7 @@ def classify():
     # They come from the get_input_label() function called by a click on
     # button#classify
     user_data = request.json
-    pic_label = user_data['JSON_input_label']
+    #pic_label = user_data['JSON_input_label']
 
     #one_pic_X will be the picture from <img id="photo">
     raw_data = user_data['JSON_pic']
@@ -102,6 +104,7 @@ def classify():
     #  Currently needs to fix sizing before going into model_output
     #  See https://github.com/nodeca/pica
 
+    pic_label = uuid.uuid4()
     extension, filename = pix.increment_filename(pic_label,extension=1)
     print "checkpoint: file name is ",filename
 
@@ -116,19 +119,20 @@ def classify():
 
     idx_preds = [picture_index_lookup[pred] for pred in preds]
 
+
     fig, ax = ld.plot_top_8(one_pic_X,pic_label,X,idx_preds,preds,weights);
 
+    picfilename = ("static/images/saved_brick_predictions/" + str(pic_label) + ".png")
+    #picfilename = "../saved_brick_predictions/" + pic_label + "_temp.png"
 
-    picfilename = "../saved_brick_predictions/" + pic_label + "_temp.png"
-
-    model_output = "label = {}, predicted ID = {}, weight = {:.1f}%".format(
-                        pic_label,preds[0], weights[0]*100)
+    model_output = "predicted ID = {}, weight = {:.1f}%".format(
+                        preds[0], weights[0]*100)
 
 
     teststring = "testing"
 
     print "ok to here: model_output =", model_output
-    return jsonify({'root_1': model_output, 'pic_x': picfilename})
+    return jsonify({'model_output': model_output, 'pic_x': picfilename})
 
 
 

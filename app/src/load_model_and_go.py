@@ -86,11 +86,10 @@ def plot_top_8(one_pic_X,pic_label,X,idx_preds,preds,weights):
     ax1 = plt.subplot2grid((2, 6), (0, 0), colspan=2,rowspan=2)
     ax1.imshow(Image.fromarray(one_pic_X[:,:,::-1]))
 
-    ax1.set_title("new brick pic: " + str(pic_label))
+    ax1.set_title("New Brick Picture ")
     ax1.grid(False)
     ax1.axis('off')
 
-    print "checkpoint 1 in plot_top_8"
     for idx1 in range(2):
         for idx2 in range(4):
             ax2 = plt.subplot2grid((2, 6), (idx1,idx2+2))
@@ -101,17 +100,14 @@ def plot_top_8(one_pic_X,pic_label,X,idx_preds,preds,weights):
             ax2.axis('off')
     #plt.show();
 
-    print "checkpoint 2 in plot_top_8"
-
     # If you like the figure, save it!
-    picfilename = ("../saved_brick_predictions/" + str(pic_label) + "_temp.png")
+    picfilename = ("static/images/saved_brick_predictions/" + str(pic_label) + ".png")
     with open(picfilename, 'wb') as whatever:
         fig.savefig(whatever)
 
     with open("static/images/latest_prediction.png", 'wb') as whatever:
         fig.savefig(whatever)
 
-    print "checkpoint 3 in plot_top_8"
 
     return fig, ax
 
