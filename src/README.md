@@ -2,14 +2,9 @@
 
 ## Source files
 
-This folder stores all executable Python and Jupyter notebook files.
+This folder stores executable Python files called by the main files.
 
 This includes:
-
-* load_model_and_go.py -- Currently running this file does everything.
-
-* load_model_and_GO_from_py_files.ipynb -- a Jupyter notebook echoing much
-  of the functional code of load_model_and_go.py.
 
 * picture_stuff.py -- Library of impored functions used by the display routines.
 

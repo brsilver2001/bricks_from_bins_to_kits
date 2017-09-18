@@ -2,4 +2,6 @@
 
 ## Brick picture temporary files.
 
-This folder stores all photos taken by the program.
+Images saved for display and reference.
+
+The sub-folder stores all photos taken by the program.

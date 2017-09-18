@@ -16,6 +16,7 @@ bricks if you know their ID number.  For example:
   * https://shop.lego.com/en-US/Pick-a-Brick  
   * https://rebrickable.com/  
   * https://brickset.com/  
+
 The rebrickable database in particular is a gold mine of connections between
 kits, bricks, colors, and more.  
 ![](static/images/downloads_schema.png)
