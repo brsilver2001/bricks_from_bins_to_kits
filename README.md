@@ -12,12 +12,12 @@ rebuilds it into something else, and at the end of the day, all the bricks go
 into a bin, never to be separated again.  Until now.
 
 There are a number of places on the web where one can get pictures of Lego
-bricks if you know their ID number.  For example:
-  * https://shop.lego.com/en-US/Pick-a-Brick
-  * https://rebrickable.com/
-  * https://brickset.com/
+bricks if you know their ID number.  For example:  
+  * https://shop.lego.com/en-US/Pick-a-Brick  
+  * https://rebrickable.com/  
+  * https://brickset.com/  
 The rebrickable database in particular is a gold mine of connections between
-kits, bricks, colors, and more.
+kits, bricks, colors, and more.  
 ![](static/images/downloads_schema.png)
 
 
