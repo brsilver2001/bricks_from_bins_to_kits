@@ -1,0 +1,145 @@
+body {
+	font-family: sans-serif;
+	font-size: 16px;
+	text-align: center;
+	color: #8ac640;
+}
+
+li {
+	text-align: left;
+	padding-left: 30px;
+}
+
+
+span {
+	font-weight: bold;
+	font-size: 17px;
+}
+
+img {
+	width:200px;
+	height:120px;
+	/* border-radius: 10px; */
+	border: 5px solid #6495ED;
+	margin: 0px 15px
+}
+
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 150;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+    width: 450;
+    height: 450;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 5px 0 5px 0;
+}
+
+
+.container {
+    padding: 10px;
+}
+
+
+input[type=text], input[type=password] {
+    width: 400;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+#banner {
+	border: 3px solid black;
+    width:500px;
+    height:200px;
+}
+
+/* All below is for attempt at webcam capture */
+/* from https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos */
+/* and  https://github.com/mdn/samples-server/tree/master/s/webrtc-capturestill */
+
+#video {
+  border: 1px solid black;
+  /*box-shadow: 2px 2px 3px black; */
+  width:399px;   /* WAS 320 */
+  height:299px;  /* WAS 240 */
+}
+
+
+#photo {
+  border: 1px solid black;
+  /*box-shadow: 2px 2px 3px black; */
+  width:299px;   /* WAS 320 */
+  height:299px;  /* WAS 240 */
+}
+
+#photo2 {
+  border: 5px solid black;
+  /*box-shadow: 2px 2px 3px black; */
+  width:840px;   /* WAS 320 */
+  height:300px;  /* WAS 240 */
+}
+
+#canvas {
+  display:none;
+}
+
+.camera {
+  width:400px;   /* WAS 340 */
+  display:inline-block;
+}
+
+.output {
+  width:299px;   /* WAS 340 */
+  display:inline-block;
+}
+
+/*
+#startbutton {
+  display:block;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  bottom:32px;
+  background-color: rgba(0, 150, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  color: rgba(255, 255, 255, 1.0);
+}
+*/
+#big_button {
+	border: 5px solid black;
+	border-radius: 15px;
+	font-size: 24px;
+	width: 500;
+	height: 150;
+}
+
+.contentarea {
+  font-size: 16px;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  width: 800px;  /* was width: 760px; */
+}

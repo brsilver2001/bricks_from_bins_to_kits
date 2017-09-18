@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Camera Test</title>
+<script>
+$('#cameraInput').on('change', function(e){
+ $data = e.originalEvent.target.files[0];
+  $reader = new FileReader();
+  reader.onload = function(evt){
+  $('#your_img_id').attr('src',evt.target.result);
+  reader.readAsDataUrl($data);
+}});
+
+</script>
+
+</head>
+<body>
+    <h2>This is a snippet of code sent to me by one of the teachers, but
+        so far I haven't used.  Just leaving it here.</h2>
+    <h3>If I knew who to give credit to, for creating it, I would.</h3>
+    <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
+</body>
+</html>
