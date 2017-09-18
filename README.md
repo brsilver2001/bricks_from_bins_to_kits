@@ -3,7 +3,7 @@
 Teaching a convolutional neural network through Keras &amp; TensorFlow to identify
 pictures from a mixed bin of Lego bricks and create an inventory of ID numbers
 to associate them with their original kits.
-
+![](static/images/initial_classification_picture.png)
 
 ### Background
 There are 2 kinds of kids who play with Legos.  One kind builds a kit, and
@@ -57,6 +57,10 @@ to reach over 99% correct classification on the training data set (80-20 split)
 and 85% correct classification on the test set.  The model was then re-trained
 on the whole set for use with new pictures.
 
+I'm still trying to decide what to do about large files.  The trained models are
+over the 100 Mb limit that GitHub sets, and the pickled file of all the training
+data is even larger.
+
 ### Step 3: Pipeline for new pictures
 
 There are plenty of ways to take photos to train on.  I set up a notebooks
@@ -65,21 +69,22 @@ saves all photos under a name and number based on the brick ID.  Thus the first
 3 shots for brick 3003 are 3003-001.jpeg, 3003-002.jpeg, and 3003-003.jpeg.
 The notebook below check whether pictures already exist under that brick ID,
 and increments the index as needed.
-        Photo_lego_pipeline_repeats.ipynb
+        src/Photo_lego_pipeline_repeats.ipynb
 
 ### Step 4: Construction of usable applications
 
-Several incarnations of the wrapper for the model exist:
+Several incarnations of the wrapper for the model exist.  Each of them either
+stands alone, or uses additional Python files from the /src directory.
 
 1. In Jupyter notebooks, there is a well-annotated version which stands alone:
         load_model_and_GO.ipynb
 2. In Jupyter notebooks, there is a version which calls most of its functions
    from the Python .py files:
-        src/load_model_and_GO_from_py_files.ipynb
+        load_model_and_GO_from_py_files.ipynb
 3. You can run the whole set from the Python .py files:
-        src/load_model_and_go.py
+        load_and_go.py
 4. Work in progress -- I'm working on a web app that moves the functionality
    of the camera to a remote client, uses their webcam or phone camera,
    and passes the picture back to the classifier through Javascript, with
    the server side handled through Flask.
-        app/app.py
+        app.py

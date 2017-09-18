@@ -3,12 +3,15 @@
 Teaching a convolutional neural network through Keras &amp; TensorFlow to
 identify pictures from a mixed bin of Lego bricks and create an inventory
 of ID numbers to associate them with their original kits.
+![](../static/images/initial_classification_picture.png)
+
+
 
 ## Sources, citations, and acknowledgements
 As in any project of all but smallest scope, we see as far as we do by standing
 on the backs of giants.  I would like to thank everyone, especially the staff
 and instructors at the [Galvanize Data Science Immersion course]
-(https://www.galvanize.com/seattle/data-science).
+https://www.galvanize.com/seattle/data-science.
 
 As this was part of a learning process, there were many false starts and
 backtracking, so it may seem odd to thank sources whose code never appears

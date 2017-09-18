@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 
-# NOTE: REVIEW IMPORTS -- SOME MAY NOT HAVE TO BE HERE
-
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
@@ -78,7 +76,6 @@ def classify():
     # They come from the get_input_label() function called by a click on
     # button#classify
     user_data = request.json
-    #pic_label = user_data['JSON_input_label']
 
     #one_pic_X will be the picture from <img id="photo">
     raw_data = user_data['JSON_pic']
@@ -100,9 +97,6 @@ def classify():
                                image_dims=299,border_fraction=0.0)
 
     Image.fromarray(one_pic_X).save('test_image.png')
-
-    #  Currently needs to fix sizing before going into model_output
-    #  See https://github.com/nodeca/pica
 
     pic_label = uuid.uuid4()
     extension, filename = pix.increment_filename(pic_label,extension=1)
@@ -127,9 +121,6 @@ def classify():
 
     model_output = "predicted ID = {}, weight = {:.1f}%".format(
                         preds[0], weights[0]*100)
-
-
-    teststring = "testing"
 
     print "ok to here: model_output =", model_output
     return jsonify({'model_output': model_output, 'pic_x': picfilename})
