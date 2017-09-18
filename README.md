@@ -16,6 +16,10 @@ bricks if you know their ID number.  For example:
   * https://shop.lego.com/en-US/Pick-a-Brick
   * https://rebrickable.com/
   * https://brickset.com/
+The rebrickable database in particular is a gold mine of connections between
+kits, bricks, colors, and more.
+![](static/images/downloads_schema.png)
+
 
 There are also a number of places where you can get the lego ID numbers if you
 know the name and number of a kit.  However,until now, getting the reverse
