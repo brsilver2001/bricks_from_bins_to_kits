@@ -24,6 +24,16 @@ img {
 	margin: 0px 15px
 }
 
+#mixed {
+	width: 512;
+	height: 384;
+}
+
+#built {
+	width: 326;
+	height: 245;
+}
+
 button {
 	background-color: #4CAF50;
 	color: white;
