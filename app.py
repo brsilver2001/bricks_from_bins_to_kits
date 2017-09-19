@@ -25,6 +25,12 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/about', methods=['GET'])
+def about():
+    '''Placeholder - stub only
+    '''
+    return render_template('about.html')
+
 @app.route('/2_take_pictures', methods=['GET'])
 def take_pictures():
     '''
