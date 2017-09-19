@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 

@@ -1,5 +1,7 @@
 from PIL import Image, ImageOps
 import numpy as np
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import cv2
 import os.path
