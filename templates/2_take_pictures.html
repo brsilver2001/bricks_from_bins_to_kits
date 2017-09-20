@@ -3,7 +3,7 @@
 
 {% block body %}
     <div>
-        <button type="button" onclick="window.location.href='{{ url_for( 'index' ) }}';" id="welcome">Main menu</button>
+        <button type="button" onclick="window.location.href='{{ url_for( 'index2' ) }}';" id="welcome">Main menu</button>
         <button type="button" onclick="window.location.href='{{ url_for( 'login' ) }}';" id="login">Log in</button>
         <button type="button" onclick="window.location.href='{{ url_for( 'new_user' ) }}';" id="new_login">New account</button>
     </div>
@@ -13,7 +13,7 @@
 
     <p>To make your own custom list of bricks:</p>
     <li>Place one brick in front of the camera.  For best results, put the brick
-        with the longest, most comples side facing the camers.</li>
+        with the longest, most complex side facing the camers.</li>
     <li>Press the "Take or retake photo" button </li>
     <li>Press the "Classify this picture" button to get the id number of this brick, or reshoot. </li>
     <p></p>
@@ -57,7 +57,6 @@
     <!--
     <p>The latest classification picture is: <span id="solution2"></span></p>
     -->
-    <h3>This is the most recent classification picture</h3>
 
     <img id="photo2" src="/static/images/initial_classification_picture.png">
 

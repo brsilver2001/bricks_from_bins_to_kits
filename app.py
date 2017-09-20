@@ -25,21 +25,29 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    '''
+    The core functionaly for classifying photos starts on this page and
+    the calls to other stuff is from here.
+    '''
+    return render_template('2_take_pictures.html')
+
+@app.route('/2_take_pictures', methods=['GET'])
+def take_pictures():
+    '''
+    The core functionaly for classifying photos starts on this page and
+    the calls to other stuff is from here.
+    '''
+    return render_template('2_take_pictures.html')
+
+@app.route('/index2', methods=['GET'])
+def index2():
+    return render_template('index2.html')
 
 @app.route('/about', methods=['GET'])
 def about():
     '''Placeholder - stub only
     '''
     return render_template('about.html')
-
-@app.route('/2_take_pictures', methods=['GET'])
-def take_pictures():
-    '''
-    The core functionaly for classifying photos starts on this page and
-    the calls to
-    '''
-    return render_template('2_take_pictures.html')
 
 @app.route('/3_login', methods=['GET'])
 def login():
