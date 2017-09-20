@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import cv2
 import os.path
 import sys
+import datetime
 
 '''
 Capstone project for Galvanize Data Science Immersion course, Seattle
@@ -250,6 +251,23 @@ def make_one_prediction_list(predict_gen,label_dic,n_match=5):
         out_list.append(preds)
     return out_list[0],out_weights[0]
 
+
+def clear_old_pictures(hours=1):
+    '''Deletes any pictures in the static/images/saved_brick_predictions/
+       which are more than hours old
+       INPUT:  hours, integer, default hours=1
+       OUTPUT: none
+    '''
+    dir_to_search = "static/images/saved_brick_predictions/"
+
+    for dirpath, dirnames, filenames in os.walk(dir_to_search):
+       for file in filenames:
+           if file[-4:]==".png":
+              curpath = os.path.join(dirpath, file)
+              file_modified = datetime.datetime.fromtimestamp(os.path.getmtime(curpath))
+              if datetime.datetime.now() - file_modified > datetime.timedelta(hours=2):
+                  print file,file_modified
+                  os.remove(curpath)
 
 def make_wrong_list(y_hot,full_prediction_list,label_dic):
     '''Takes a list of item labels and predicted values and returns a

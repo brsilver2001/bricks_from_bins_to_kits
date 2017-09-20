@@ -83,6 +83,7 @@ def classify():
     # See static/app.js for source of JSON_input_label and JSON_pic
     # They come from the get_input_label() function called by a click on
     # button#classify
+    pix.clear_old_pictures()
     user_data = request.json
 
     #one_pic_X will be the picture from <img id="photo">
