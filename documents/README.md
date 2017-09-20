@@ -28,15 +28,20 @@ A - Application to be executed remotely in server-client relationship
 
 * Python
     * matplotlib -- (all versions)
-      (https://matplotlib.org/)
+      (https://matplotlib.org/)  
+      I had some issues here with library installs, so also may need:  
+      sudo apt-get install libgtk2.0-0  
     * PIL (Python image library) -- (all versions)
       (http://www.pythonware.com/products/pil/)
     * OpenCV (J,P)
       (https://opencv-python-tutroals.readthedocs.io/en/latest/)
+      conda install -c menpo opencv  
 
 * TensorFlow neural networks
     * Keras front end - (all versions)
       (https://keras.io/)
+      pip install keras  
+      pip install tensorflow  
     * Inception V3 partially pre-trained model - (all versions)
       (https://www.tensorflow.org/tutorials/image_recognition)
 
