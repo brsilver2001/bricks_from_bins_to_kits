@@ -16,5 +16,6 @@ https://s3-us-west-2.amazonaws.com/two-squared-sigma-x-2/keras_inception_all_re-
 https://s3-us-west-2.amazonaws.com/two-squared-sigma-x-2/keras_inception_all_re-trained.h5
 
 
-Also saved in this folder at pickled label dictionaries. These connect the
-indices of the model outputs to brick name labels.
+Also saved in this folder are pickled label dictionaries. These connect the
+indices of the model outputs to brick name labels, and were each generated with
+their associated TensorFlow models.

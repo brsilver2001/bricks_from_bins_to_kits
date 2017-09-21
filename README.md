@@ -1,7 +1,7 @@
 # bricks_from_bins_to_kits
 
 Teaching a convolutional neural network through Keras &amp; TensorFlow to identify
-pictures from a mixed bin of Lego bricks and create an inventory of ID numbers
+pictures from a mixed bin of Lego bricks. Then creating an inventory of ID numbers
 to associate them with their original kits.
 ![](static/images/initial_classification_picture.png)
 
@@ -62,18 +62,24 @@ to reach over 99% correct classification on the training data set (80-20 split)
 and 85% correct classification on the test set.  The model was then re-trained
 on the whole set for use with new pictures.
 
-I'm still trying to decide what to do about large files.  The trained models are
-over the 100 Mb limit that GitHub sets, and the pickled file of all the training
-data is even larger.
+This repo has an issue with large files.  The trained models are
+over the 100 Mb limit that GitHub sets, and the pickled file of all the training data is even larger.  Therefore I've put a copy of the
+trained models on an AWS S3 bucket and anyone wanting to duplicate
+this can download it from there:
+
+https://s3-us-west-2.amazonaws.com/two-squared-sigma-x-2/keras_inception_all_re-trained-grey.h5
+
+https://s3-us-west-2.amazonaws.com/two-squared-sigma-x-2/keras_inception_all_re-trained.h5
+
 
 ### Step 3: Pipeline for new pictures
 
-There are plenty of ways to take photos to train on.  I set up a notebooks
+There are plenty of ways to take photos to train on.  I set up a Jupyter notebook
 which crops and scales to the 299 x 299 size that Inception V3 prefers, and
-saves all photos under a name and number based on the brick ID.  Thus the first
-3 shots for brick 3003 are 3003-001.jpeg, 3003-002.jpeg, and 3003-003.jpeg.
-The notebook below check whether pictures already exist under that brick ID,
-and increments the index as needed.
+saves all photos under a name and number based on the brick ID.  The notebook checks
+whether pictures already exist under that brick ID, and increments the index as needed.
+Thus, the first 3 shots for brick 3003 are 3003-001.jpeg, 3003-002.jpeg, and
+3003-003.jpeg.  See:  
         src/Photo_lego_pipeline_repeats.ipynb
 
 ### Step 4: Construction of usable applications
@@ -93,3 +99,5 @@ stands alone, or uses additional Python files from the /src directory.
    and passes the picture back to the classifier through Javascript, with
    the server side handled through Flask.
         app.py
+5. A Live version of this app is found at  
+        http://bens-bricks.com
