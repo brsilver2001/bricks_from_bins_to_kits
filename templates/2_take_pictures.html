@@ -2,12 +2,12 @@
 
 
 {% block body %}
-    <div>
+<!--    <div>
         <button type="button" onclick="window.location.href='{{ url_for( 'index2' ) }}';" id="welcome">Main menu</button>
         <button type="button" onclick="window.location.href='{{ url_for( 'login' ) }}';" id="login">Log in</button>
         <button type="button" onclick="window.location.href='{{ url_for( 'new_user' ) }}';" id="new_login">New account</button>
     </div>
-
+-->
     <h2>Take Pictures</h2>
     <p></p>
 
@@ -18,21 +18,20 @@
     <li>Press the "Classify this picture" button to get the id number of this brick, or reshoot. </li>
     <p></p>
 
-
+<!--
     <p>
         <img src="/static/images/lego digital designer screenshot.png" alt="This is a brick">
     </p>
 
-    <!--
+
     <div>
         <span>Please enter the a label to save your picture under:</span>
         <input id="label"></input>
     </div>
-    -->
+-->
 
     <!-- This div is pasted from https://github.com/mdn/samples-server/tree/master/s/webrtc-capturestill -->
     <div class="contentarea">
-      <p> Photo preview and photo shown here</p>
       <div class="camera">
           <video id="video">Video stream not available.</video>
       </div>
