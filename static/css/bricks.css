@@ -25,13 +25,18 @@ img {
 }
 
 #mixed {
-	width: 512;
-	height: 384;
+	width: 512px;
+	height: 384px;
 }
 
 #built {
-	width: 326;
-	height: 245;
+	width: 326px;
+	height: 245px;
+}
+
+#all_examples {
+	width: 940px;
+	height: 849px;
 }
 
 button {

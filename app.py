@@ -49,6 +49,12 @@ def about():
     '''
     return render_template('about.html')
 
+@app.route('/just_brick_pics', methods=['GET'])
+def just_brick_pics():
+    '''Placeholder - stub only
+    '''
+    return render_template('just_brick_pics.html')
+
 @app.route('/3_login', methods=['GET'])
 def login():
     '''Placeholder - stub only

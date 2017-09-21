@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<!--    <div>
+        <button type="button" onclick="window.location.href='{{ url_for( 'index2' ) }}';" id="welcome">Main menu</button>
+        <button type="button" onclick="window.location.href='{{ url_for( 'login' ) }}';" id="login">Log in</button>
+        <button type="button" onclick="window.location.href='{{ url_for( 'new_user' ) }}';" id="new_login">New account</button>
+    </div>
+-->
+    <h1>The classification model</h1>
+    <p>The model is based on a TensorFlow back end and Keras front end, using Inception V3 for transfer learning.
+        More information is available at the
+        <a href="https://github.com/brsilver2001/bricks_from_bins_to_kits">Bins to Bricks GitHub repository</a>
+    </p>
+
+    <h2>These are the bricks we can currently distinguish</h2>
+
+    <img id="all_examples" src="/static/images/all_examples.png">
+
+
+
+{% endblock %}

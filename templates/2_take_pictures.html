@@ -2,18 +2,21 @@
 
 
 {% block body %}
-<!--    <div>
-        <button type="button" onclick="window.location.href='{{ url_for( 'index2' ) }}';" id="welcome">Main menu</button>
+    <div>
+<!--        <button type="button" onclick="window.location.href='{{ url_for( 'index2' ) }}';" id="welcome">Main menu</button>
         <button type="button" onclick="window.location.href='{{ url_for( 'login' ) }}';" id="login">Log in</button>
         <button type="button" onclick="window.location.href='{{ url_for( 'new_user' ) }}';" id="new_login">New account</button>
+-->        <button type="button" onclick="window.location.href='{{ url_for( 'about' ) }}';" id="about">About Ben's Bricks</button>
+        <button type="button" onclick="window.location.href='{{ url_for( 'just_brick_pics' ) }}';" id="just_brick_pics">About the model</button>
+
     </div>
--->
+
     <h2>Take Pictures: works with Firefox or Chrome</h2>
     <p></p>
 
     <p>To make your own custom list of bricks:</p>
-    <li>Place one brick in front of the camera.  For best results, put the brick
-        with the longest, most complex side facing the camers.</li>
+    <li>Place one brick in front of the camera,
+        with the longest, most complex side facing the camera.</li>
     <li>Press the "Take or retake photo" button </li>
     <li>Press the "Classify this picture" button to get the id number of this brick, or reshoot. </li>
     <p></p>
